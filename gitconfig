@@ -11,7 +11,8 @@
 
 [core]
   pager = less -FRSX
-	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
+	editor = atom --wait
+	excludesfile = /Users/alyssa.biot/.gitignore_global
 
 [alias]
   co = checkout
@@ -49,3 +50,22 @@
 [user]
 	email = alyssa.biot@gmail.com
 	name = Alyssa Biot
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/alyssa.biot/.stCommitMsg
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "ssh://git@github.com/jobteaser/"]
+  insteadOf = https://github.com/jobteaser/
+[pull]
+	rebase = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
